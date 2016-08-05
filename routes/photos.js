@@ -9,7 +9,7 @@ photos.push({
     path: 'http://nodejs.org/images/ryan-speaker.jpg'
 });
 
-exports.lists = function (req, res) {
+exports.lists = (req, res) => {
     console.log('route photos exected');
     res.render('photos', {
         title: 'Photos',
