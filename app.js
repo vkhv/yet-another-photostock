@@ -7,8 +7,9 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var photos = require('./routes/photos');
-
 var app = express();
+var bb = require('express-busboy');
+bb.extend(app, {upload: true, path: __dirname + 'public/photos'});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,8 +24,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', photos.lists);
-//app.use('/users', users);
+app.get('/upload', photos.form);
+app.post('/upload', photos.submit(`${__dirname}/public/images/`));
 
+//app.use('/users', users);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

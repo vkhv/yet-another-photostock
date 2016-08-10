@@ -1,18 +1,28 @@
+const join = require('path').join
 const photos = [];
-photos.push({
-    name: 'Node.js Logo',
-    path: 'http://nodejs.org/images/logos/nodejs-green.png'
-});
-
-photos.push({
-    name: 'Rayan Speaking',
-    path: 'http://nodejs.org/images/ryan-speaker.jpg'
-});
+const Photo = require('../models/Photo');
+const fs = require('fs');
 
 exports.lists = (req, res) => {
-    console.log('route photos exected');
     res.render('photos', {
         title: 'Photos',
         photos
+    })
+}
+
+exports.form = (req, res) => res.render('photos/upload', { title : 'Photo upload' })
+
+exports.submit = dir => (req, res, next) => {
+    fs.rename(req.files.image.file, dir +  req.files.image.filename, err => {
+        console.log(dir + req.files.image.filename);
+        if (err) {
+            return next(err);
+        }
+        Photo.create({
+            name: req.files.image.name, path: dir + req.files.image
+        }, err => {
+            if(err) return next(err);
+            res.redirect('/');
+        })
     })
 }
