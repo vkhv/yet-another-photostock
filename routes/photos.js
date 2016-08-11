@@ -29,3 +29,12 @@ exports.submit = dir => (req, res, next) => {
         })
     })
 }
+exports.download = (dir) => (req, res, next) => {
+    const id = req.params.id;
+
+    Photo.findById(id, (err, photo) => {
+        if(err) return next();
+        const path = join(dir, photo.path);
+        res.sendFile(path);
+    })
+}
