@@ -4,22 +4,25 @@ const Photo = require('../models/Photo');
 const fs = require('fs');
 
 exports.lists = (req, res) => {
-    res.render('photos', {
-        title: 'Photos',
-        photos
+    Photo.find({}, function (err, photos) {
+        if(err) return next();
+        res.render('photos', {
+            title: 'Photos',
+            photos
+        })
     })
 }
 
 exports.form = (req, res) => res.render('photos/upload', { title : 'Photo upload' })
 
 exports.submit = dir => (req, res, next) => {
-    fs.rename(req.files.image.file, dir +  req.files.image.filename, err => {
-        console.log(dir + req.files.image.filename);
-        if (err) {
-            return next(err);
-        }
+    const file = req.files.image.file;
+    const name = req.files.image.filename;
+    const path = `images/${name}`
+    fs.rename(file, dir + name,  err => {
+        if (err) return next(err);
         Photo.create({
-            name: req.files.image.name, path: dir + req.files.image
+            name, path
         }, err => {
             if(err) return next(err);
             res.redirect('/');
