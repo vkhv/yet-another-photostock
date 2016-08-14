@@ -13,9 +13,9 @@ exports.lists = (req, res) => {
         //})
     //
     //})
-    Photo.then(files => {
+    Photo().then(files => {
         res.render('photos', {
-           title: files,
+           title: 'Ptotos',
             photos: files
         })
     })
@@ -29,12 +29,7 @@ exports.submit = dir => (req, res, next) => {
     const path = `images/${name}`
     fs.rename(file, dir + name,  err => {
         if (err) return next(err);
-        Photo.create({
-            name, path
-        }, err => {
-            if(err) return next(err);
-            res.redirect('/');
-        })
+        res.redirect('/');
     })
 }
 exports.download = (dir) => (req, res, next) => {
