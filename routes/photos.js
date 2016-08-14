@@ -1,14 +1,22 @@
 const join = require('path').join
 const photos = [];
+// returns Promise
 const Photo = require('../models/Photo');
 const fs = require('fs');
 
 exports.lists = (req, res) => {
-    Photo.find({}, function (err, photos) {
-        if(err) return next();
+    //Photo.find({}, function (err, photos) {
+        //if(err) return next();
+        //res.render('photos', {
+            //title: 'Photos',
+            //photos
+        //})
+    //
+    //})
+    Photo.then(files => {
         res.render('photos', {
-            title: 'Photos',
-            photos
+           title: files,
+            photos: files
         })
     })
 }
