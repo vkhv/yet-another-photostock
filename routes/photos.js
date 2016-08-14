@@ -26,7 +26,7 @@ exports.form = (req, res) => res.render('photos/upload', { title : 'Photo upload
 exports.submit = dir => (req, res, next) => {
     const file = req.files.image.file;
     const name = req.files.image.filename;
-    const path = `images/${name}`
+    const path = `images/stock/${name}`
     fs.rename(file, dir + name,  err => {
         if (err) return next(err);
         res.redirect('/');
