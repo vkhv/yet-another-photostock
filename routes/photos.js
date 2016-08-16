@@ -13,7 +13,10 @@ exports.lists = (req, res) => {
         //})
     //
     //})
+    console.log('exec');
+    console.log(Photo());
     Photo().then(files => {
+        console.log(files);
         res.render('photos', {
            title: 'Ptotos',
             photos: files
