@@ -6,7 +6,7 @@
 //var bodyParser = require('body-parser');
 
 //var routes = require('./routes/index');
-//var photos = require('./routes/photos');
+var photos = require('./routes/photos');
 //var app = express();
 //var bb = require('express-busboy');
 //bb.extend(app, {upload: true, path: __dirname + 'public/photos'});
@@ -65,10 +65,11 @@ var express = require("express");
 var app = express();
 
 // Set up a URL route
-app.get("/", function(req, res) {
- res.send(`Heroku Demo!${1+1}`);
-});
+//app.get("/", function(req, res) {
+ //res.send(`Heroku Demo!${1+1}`);
+//});
 
+app.get('/', photos.lists);
 // bind the app to listen for connections on a specified port
 var port = process.env.PORT || 3000;
 app.listen(port);
