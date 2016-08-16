@@ -8,8 +8,8 @@
 //var routes = require('./routes/index');
 var photos = require('./routes/photos');
 //var app = express();
-var bb = require('express-busboy');
-bb.extend(app, {upload: true, path: __dirname + 'public/photos'});
+//var bb = require('express-busboy');
+//bb.extend(app, {upload: true, path: __dirname + 'public/photos'});
 
 //// view engine setup
 //app.set('views', path.join(__dirname, 'views'));
