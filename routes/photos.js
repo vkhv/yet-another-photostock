@@ -13,13 +13,15 @@ exports.lists = (req, res) => {
         //})
     //
     //})
+    console.log('exec');
+    console.log(Photo());
     Photo().then(files => {
+        console.log(files);
         res.render('photos', {
            title: 'Ptotos',
             photos: files
         })
     })
-    console.log(photos);
 }
 
 exports.form = (req, res) => res.render('photos/upload', { title : 'Photo upload' })
