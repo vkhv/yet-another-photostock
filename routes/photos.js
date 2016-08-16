@@ -20,7 +20,7 @@ exports.lists = (req, res) => {
         //})
     //})
     console.log('test');
-    res.end(1111)
+    res.end('1111')
 }
 
 exports.form = (req, res) => res.render('photos/upload', { title : 'Photo upload' })
