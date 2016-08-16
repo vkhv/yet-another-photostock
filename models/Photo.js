@@ -12,6 +12,6 @@ const images = () => co(function* () {
             });
         });
         return files;
-    });
+});
 // returned promise.
 module.exports = images;
