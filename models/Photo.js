@@ -4,7 +4,7 @@ const co = require('co');
 // Reads imgaes dir and returns all filenames in promise.
 const images = () => co(function* () {
         const files = yield new Promise((resolve, reject) => {
-            fs.readdir('/home/pi/lab/yet-another-photostock/public/images/stock', (err, files) => {
+            fs.readdir('../public/images/stock', (err, files) => {
                 if(err) throw new Error(err);
                 resolve(files);
             });
