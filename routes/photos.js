@@ -19,7 +19,7 @@ exports.lists = (req, res) => {
             //photos: files
         //})
     //})
-    console.log('test');
+    console.log(Promise);
     res.end('1111')
 }
 
