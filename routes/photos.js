@@ -5,16 +5,6 @@ const Photo = require('../models/Photo');
 const fs = require('fs');
 
 exports.lists = (req, res) => {
-    //Photo.find({}, function (err, photos) {
-        //if(err) return next();
-        //res.render('photos', {
-            //title: 'Photos',
-            //photos
-        //})
-    //
-    //})
-    console.log('exec');
-    console.log(Photo());
     Photo().then(files => {
         console.log(files);
         res.render('photos', {
