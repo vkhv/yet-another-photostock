@@ -71,7 +71,8 @@
           <!--</div>-->
         <!--</div>-->
         <!--<img src="images/portfolio/work-1.jpg" class="img-responsive" alt=""> </a> </div>-->
-        <% photos.slice(0, 6).map(photo => { %>
+
+        <% photos.sort((a,b) => a.replace(/\D+/g,"") - b.replace(/\D+/g,"") ).map(photo => { %>
                 <div class="col-sm-6 portfolio-item"> <a href="work-details.html" class="portfolio-link">
                      <div class="caption">
                         <div class="caption-content">
