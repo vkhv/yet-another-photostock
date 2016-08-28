@@ -18,6 +18,15 @@
 <link rel="stylesheet" href="css/animate.min.css">
 <link rel="stylesheet" href="css/font-icon.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<style>
+.flexible {
+    display: flex;
+    flex-direction: column-reverse;
+}
+.portfolio-item {
+    display: flex;
+}
+</style>
 </head>
 <body>
 <!-- header top section -->
@@ -62,7 +71,7 @@
         <hr class="section">
       </div>
     </div>
-    <div class="row">
+    <div class="row flexible">
       <!--<div class="col-sm-6 portfolio-item"> <a href="work-details.html" class="portfolio-link">-->
         <!--<div class="caption">-->
           <!--<div class="caption-content">-->
@@ -73,7 +82,7 @@
         <!--<img src="images/portfolio/work-1.jpg" class="img-responsive" alt=""> </a> </div>-->
 
         <% photos.sort((a,b) => a.replace(/\D+/g,"") - b.replace(/\D+/g,"") ).map(photo => { %>
-                <div class="col-sm-6 portfolio-item"> <a href="work-details.html" class="portfolio-link">
+                <div class="portfolio-item"> <a href="work-details.html" class="portfolio-link">
                      <div class="caption">
                         <div class="caption-content">
                             <h3>The Shape of Design</h3>
