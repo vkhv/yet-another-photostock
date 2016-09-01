@@ -14,7 +14,17 @@ exports.lists = (req, res) => {
     })
 }
 
-exports.form = (req, res) => res.render('photos/upload', { title : 'Photo upload' })
+exports.form = (req, res) => {
+
+    Photo().then(files => {
+        console.log(files);
+        res.render('photos/upload', {
+           title: 'Ptotos',
+            photos: files
+        })
+    })
+ //res.render('photos/upload', { title : 'Photo upload' })
+}
 
 exports.submit = dir => (req, res, next) => {
     const file = req.files.image.file;

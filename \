@@ -27,7 +27,7 @@ app.get('/', photos.lists);
 app.get('/upload', photos.form);
 app.post('/upload', photos.submit(`${__dirname}/public/images/`));
 app.get('/photo/:id/download', photos.download(`${__dirname}/public/`));
-app.delete('/remove', () => {
+app.delete('/', () => {
     console.log(11111);
 });
 

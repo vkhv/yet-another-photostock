@@ -4,16 +4,47 @@
     <meta charset="UTF-8">
     <title><%= title %></title>
     <link rel='stylessheet' href='/stylesheets/style.css' />
+    <script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+    <!-- The ReactDOM Library -->
+    <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+    <style>
+.react  div {
+    display: flex;
+    flex-direction: column-reverse;
+}
+    img {
+        height: 400px;
+        width: 400px
+    }
+    </style>
 </head>
 <body>
-    <h1><%= title %></h1>
-    <p>Upload a photo to your account below</p>
-    <form method='post' enctype='multipart/form-data'>
-        <p>
-            <input type="text", name='photo[name]', placeholder='Name' />
-        </p>
-        <p><input type="file", name='image' /></p>
-        <p><input type="submit", value='Upload' /></p>
-    </form>
+
+
+    <div class='react'></div>
+
+<script type="text/jsx">
+// JSX mixed withs ejx. Fuck ur brain boy!
+const Photo = React.createClass({
+
+    removeImg: function(event) {
+        fetch('/remove/' + event.target.innerText, {method: 'DELETE'})
+    },
+    getInitialState: function(){
+        return {imageNumber: null}
+    },
+    render: function() {
+
+        return <div><% photos.sort((a,b) => a.replace(/\D+/g,"") - b.replace(/\D+/g,"") ).map(photo => { %>
+                <div className="portfolio-item">
+                    <h3 onClick={  this.removeImg }><%=photo %></h3>
+                    <img src="images/stock/<%= photo %>" className="img-responsive" />  </div>
+            <% }) %></div>
+    }
+});
+
+ReactDOM.render(<Photo/>, document.querySelector('.react'))
+            </script>
 </body>
 </html>
