@@ -27,10 +27,7 @@ app.get('/', photos.lists);
 app.get('/upload', photos.form);
 app.post('/upload', photos.submit(`${__dirname}/public/images/`));
 app.get('/photo/:id/download', photos.download(`${__dirname}/public/`));
-app.delete('/remove', () => {
-    console.log(11111);
-});
-
+app.delete('/remove/*', photos.remove);
 ////app.use('/users', users);
 //// catch 404 and forward to error handler
 app.use(function(req, res, next) {

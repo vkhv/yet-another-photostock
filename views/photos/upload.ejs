@@ -29,7 +29,12 @@
 const Photo = React.createClass({
 
     removeImg: function(event) {
-        fetch('/remove/' + event.target.innerText, {method: 'DELETE'})
+            console.log(event.target);
+        fetch('/remove/?id=' + event.target.innerText, {method: 'DELETE'}).then(result => {
+
+            result.status == 200 && alert('Фото успешно удалено');  location.reload();
+            result.status == 500 && alert('Произошла ошибка');
+        })
     },
     getInitialState: function(){
         return {imageNumber: null}

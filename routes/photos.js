@@ -44,3 +44,12 @@ exports.download = (dir) => (req, res, next) => {
         res.sendFile(path);
     })
 }
+exports.remove = (req, res) => {
+    console.log(req.query.id);
+    fs.unlink(__dirname +'/../public/images/stock/' + req.query.id, err => {
+        if(err) {
+            res.status('500')
+        }
+        res.send('succes')
+    })
+}
