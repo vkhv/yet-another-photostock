@@ -27,6 +27,7 @@ exports.form = (req, res) => {
 }
 
 exports.submit = dir => (req, res, next) => {
+    console.log(req.files);
     const file = req.files.image.file;
     const name = req.files.image.filename;
     const path = `images/stock/${name}`

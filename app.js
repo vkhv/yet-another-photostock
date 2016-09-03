@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', photos.lists);
 app.get('/upload', photos.form);
-app.post('/upload', photos.submit(`${__dirname}/public/images/`));
+app.post('/upload', photos.submit(`${__dirname}/public/images/stock/`));
 app.get('/photo/:id/download', photos.download(`${__dirname}/public/`));
 app.delete('/remove/*', photos.remove);
 //app.use('/users', users);

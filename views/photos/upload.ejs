@@ -8,28 +8,39 @@
     <!-- The ReactDOM Library -->
     <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
     <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fetch/1.0.0/fetch.min.js'></script>
     <style>
-.react  div {
-    display: flex;
-    flex-direction: column-reverse;
-}
-    img {
-        height: 400px;
-        width: 400px
-    }
+        .react  div {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .remover {
+            cursor: pointer;
+        }
+        img {
+            height: 400px;
+            width: 400px
+        }
+        body {
+            font-family: sans-serif;
+        }
     </style>
 </head>
 <body>
-
-
-    <div class='react'></div>
+    <section class='upload-form'>
+        <h3>Форма загрузки</h3>
+        <form method='POST'  enctype="multipart/form-data" >
+            <input type='file' name='image' />
+            <input type='submit'>
+        </form>
+    </section>
+    <section class='react'></section>
 
 <script type="text/jsx">
 // JSX mixed withs ejx. Fuck ur brain boy!
 const Photo = React.createClass({
 
     removeImg: function(event) {
-            console.log(event.target);
         fetch('/remove/?id=' + event.target.innerText, {method: 'DELETE'}).then(result => {
 
             result.status == 200 && alert('Фото успешно удалено');  location.reload();
@@ -41,11 +52,14 @@ const Photo = React.createClass({
     },
     render: function() {
 
-        return <div><% photos.sort((a,b) => a.replace(/\D+/g,"") - b.replace(/\D+/g,"") ).map(photo => { %>
-                <div className="portfolio-item">
-                    <h3 onClick={  this.removeImg }><%=photo %></h3>
-                    <img src="images/stock/<%= photo %>" className="img-responsive" />  </div>
-            <% }) %></div>
+        return <div> 
+                    <% photos.sort((a,b) => a.replace(/\D+/g,"") - b.replace(/\D+/g,"") ).map(photo => { %>
+                        <div className="portfolio-item">
+                            <h3 className='remover'  onClick={  this.removeImg }><%=photo %></h3>
+                            <img src="images/stock/<%= photo %>" className="img-responsive" />  </div>
+                        <% }) %>
+                    <h3>Для удаления нужно нажать на номер фото</h3>
+                </div>
     }
 });
 
