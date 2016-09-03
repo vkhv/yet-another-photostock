@@ -26,6 +26,10 @@
 .portfolio-item {
     display: flex;
 }
+.portfolio-item img {
+    height: 80%;
+    width: 80%;
+}
 </style>
 </head>
 <body>
@@ -35,8 +39,8 @@
     <div class="header-content clearfix"> <a class="logo" href="index.html"><img src="images/logo.png" alt=""></a>
       <nav class="navigation" role="navigation">
         <ul class="primary-nav">
-          <li>612.269.8419</li>
-          <li><a href="mainlto:hello@phdl.co">hello@agency.com</a></li>
+          <li>8951 467-20-99</li>
+          <!--<li><a href="mainlto:hello@phdl.co">hello@agency.com</a></li>-->
         </ul>
       </nav>
       <a href="#" class="nav-toggle">Menu<span></span></a> </div>
@@ -55,7 +59,7 @@
       </div>
       <div class="col-md-5 col-sm-6 hero">
         <div class="hero-content">
-            <p>The best Photographer from Magnitogorsk.</p>
+            <p>Russian Magnitogorsk.</p>
         </div>
         <!-- hero --> 
       </div>
@@ -82,14 +86,8 @@
         <!--<img src="images/portfolio/work-1.jpg" class="img-responsive" alt=""> </a> </div>-->
 
         <% photos.sort((a,b) => a.replace(/\D+/g,"") - b.replace(/\D+/g,"") ).map(photo => { %>
-                <div class="portfolio-item"> <a href="work-details.html" class="portfolio-link">
-                     <div class="caption">
-                        <div class="caption-content">
-                            <h3>The Shape of Design</h3>
-                            <h4>Branding/Graphic</h4>
-                        </div>
-                    </div>
-                    <img src="images/stock/<%= photo %>" class="img-responsive" alt=""> </a> </div>
+            <div class="portfolio-item">                                         
+                <img src="images/stock/<%= photo %>" class="img-responsive" alt=""> </div>
             <% }) %>
     </div>
   </div>
@@ -129,7 +127,7 @@
   <div class="container">
     <div class="col-md-6 left">
       <h4>Let's work together</h4>
-      <p> Call: 612.269.8419 OR Email : <a href="mailto:hello@agency.com"> hello@agency.com </a></p>
+      <p>8951 467-20-99</p>
     </div>
     <div class="col-md-6 right">
       <p>© 2015 All rights reserved. All Rights Reserved<br>
